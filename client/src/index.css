@@ -1,0 +1,19 @@
+@import "tailwindcss";
+:root {
+  --icici-orange: #ff6f00;
+  --icici-blue: #0a3d62;
+}
+
+/* Optional reusable classes */
+.bg-iciciOrange {
+  background-color: var(--icici-orange);
+}
+.bg-iciciBlue {
+  background-color: var(--icici-blue);
+}
+.text-iciciBlue {
+  color: var(--icici-blue);
+}
+.text-iciciOrange {
+  color: var(--icici-orange);
+}
