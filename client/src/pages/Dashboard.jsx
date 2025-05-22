@@ -19,8 +19,8 @@ const Dashboard = () => {
       const accData = await accRes.json();
       const txData = await txRes.json();
 
-      setAccounts(accData.accounts);
-      setTransactions(txData.transactions.slice(0, 5)); // last 5
+      setAccounts(accData?.accounts);
+      setTransactions(txData?.transactions?.slice(0, 5)); // last 5
     };
 
 
