@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_BASE } from "../utils/api";
 
 const ChangePassword = () => {
   const [form, setForm] = useState({
@@ -15,7 +16,7 @@ const ChangePassword = () => {
       return;
     }
 
-    const res = await fetch("http://localhost:8080/api/auth/change-password", {
+    const res = await fetch(`${API_BASE}/auth/change-password`, {
       method: "PUT",
       credentials: "include",
       headers: { "Content-Type": "application/json" },

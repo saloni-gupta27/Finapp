@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_BASE } from "../utils/api";
 
 
 const DepositForm = ({ accountId, onDeposit }) => {
@@ -8,7 +9,7 @@ const DepositForm = ({ accountId, onDeposit }) => {
       e.preventDefault();
       if (!amount) return;
   
-      await fetch(`http://localhost:8080/api/accounts/${accountId}/deposit`, {
+      await fetch(`${API_BASE}/accounts/${accountId}/deposit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

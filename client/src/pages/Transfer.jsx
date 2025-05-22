@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { API_BASE } from "../utils/api";
 
 const Transfer = () => {
   const [accounts, setAccounts] = useState([]);
@@ -8,7 +9,7 @@ const Transfer = () => {
   const [message, setMessage] = useState("");
 
   const fetchAccounts = async () => {
-    const res = await fetch("http://localhost:8080/api/accounts", {
+    const res = await fetch(`${API_BASE}/accounts`, {
       credentials: "include",
       method: "GET",
     });
@@ -18,7 +19,7 @@ const Transfer = () => {
 
   const handleTransfer = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:8080/api/accounts/transfer", {
+    const res = await fetch(`${API_BASE}/accounts/transfer`, {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },

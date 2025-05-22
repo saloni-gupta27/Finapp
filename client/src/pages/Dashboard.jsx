@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import TransactionTable from "../components/TransactionTable";
 import AccountCard from "../components/AccountCard";
+import { API_BASE } from "../utils/api";
 
 const Dashboard = () => {
   const [accounts, setAccounts] = useState([]);
@@ -12,8 +13,8 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchAll = async () => {
       const [accRes, txRes] = await Promise.all([
-        fetch("http://localhost:8080/api/accounts", { credentials: "include" }),
-        fetch("http://localhost:8080/api/transactions", { credentials: "include" }),
+        fetch(`${API_BASE}/accounts`, { credentials: "include" }),
+        fetch(`${API_BASE}/transactions`, { credentials: "include" }),
       ]);
       const accData = await accRes.json();
       const txData = await txRes.json();

@@ -1,4 +1,5 @@
-const API_BASE = "http://localhost:8080/api";
+export const API_BASE = "https://finapp-he66.onrender.com/api"
+//"http://localhost:8080/api";
 
 export const registerUser = async (data) => {
   const res = await fetch(`${API_BASE}/auth/register`, {

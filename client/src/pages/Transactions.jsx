@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import TransactionTable from "../components/TransactionTable";
+import { API_BASE } from "../utils/api";
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
@@ -8,8 +9,8 @@ const Transactions = () => {
   useEffect(() => {
     const fetchData = async () => {
       const [txRes, accRes] = await Promise.all([
-        fetch("http://localhost:8080/api/transactions", { credentials: "include" }),
-        fetch("http://localhost:8080/api/accounts", { credentials: "include" }),
+        fetch(`${API_BASE}/transactions`, { credentials: "include" }),
+        fetch(`${API_BASE}/accounts`, { credentials: "include" }),
       ]);
       const txData = await txRes.json();
       const accData = await accRes.json();

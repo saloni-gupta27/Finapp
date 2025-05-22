@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../utils/api";
 
 const AuthContext = createContext();
 
@@ -11,7 +12,7 @@ export function AuthProvider ({children}){
     useEffect(()=>{
         const checkAuth = async () => {
             try {
-              const res = await fetch("http://localhost:8080/api/auth/profile", {
+              const res = await fetch(`${API_BASE}/auth/profile`, {
                 credentials: "include", // ✅ include cookie
               });
               const data = await res.json();
@@ -27,7 +28,7 @@ export function AuthProvider ({children}){
     },[])
 
     const login = async (form) => {
-        const res = await fetch("http://localhost:8080/api/auth/login", {
+        const res = await fetch(`${API_BASE}/auth/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           credentials: "include", // ✅ cookie
@@ -40,7 +41,7 @@ export function AuthProvider ({children}){
     
 
       const logout = async () => {
-        await fetch("http://localhost:5000/api/auth/logout", {
+        await fetch(`${API_BASE}/auth/logout`, {
           method: "POST",
           credentials: "include",
         });
