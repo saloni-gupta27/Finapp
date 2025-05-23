@@ -43,15 +43,15 @@ const Accounts = () => {
   const [balance, setBalance] = useState("");
 
   const fetchAccounts = async () => {
-    const res = await fetch("http://localhost:8080/api/accounts", {
+    const res = await fetch(`${API_BASE}/accounts`, {
       credentials: "include",
     });
     const data = await res.json();
-    setAccounts(data.accounts);
+    setAccounts(data?.accounts);
   };
 
   const createAccount = async () => {
-    const res = await fetch("http://localhost:8080/api/accounts", {
+    const res = await fetch(`${API_BASE}/accounts`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

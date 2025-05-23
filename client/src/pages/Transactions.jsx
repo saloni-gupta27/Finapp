@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import TransactionTable from "../components/TransactionTable";
 import { API_BASE } from "../utils/api";
+import Loader from "../components/Loader";
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
   const [accounts, setAccounts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,6 +18,7 @@ const Transactions = () => {
       const accData = await accRes.json();
       setTransactions(txData.transactions);
       setAccounts(accData.accounts);
+      setLoading(false);
     };
 
     fetchData();
@@ -32,6 +35,8 @@ const Transactions = () => {
     }
     return "-";
   };
+
+  if (loading) return <Loader />;
 
   return (
     <div className="p-6">

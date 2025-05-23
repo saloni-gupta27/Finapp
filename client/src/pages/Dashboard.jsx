@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
 import TransactionTable from "../components/TransactionTable";
 import AccountCard from "../components/AccountCard";
 import { API_BASE } from "../utils/api";
+import Loader from "../components/Loader";
 
 const Dashboard = () => {
   const [accounts, setAccounts] = useState([]);
   const [transactions, setTransactions] = useState([]);
-  const {user} = useAuth();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAll = async () => {
@@ -21,6 +21,7 @@ const Dashboard = () => {
 
       setAccounts(accData?.accounts);
       setTransactions(txData?.transactions?.slice(0, 5)); // last 5
+      setLoading(false);
     };
 
 
@@ -37,6 +38,9 @@ const Dashboard = () => {
     }
     return "-";
   };
+  
+   if (loading) 
+    return <Loader />;
 
   return (
     <div className="p-6 space-y-8">

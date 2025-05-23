@@ -15,7 +15,7 @@ connectDB();
 
 // Middleware
 app.use(cors({
-    origin: "https://findmoney.netlify.app",//true, //"http://localhost:5173" // frontend origin
+    origin: "https://findmoney.netlify.app/",//true, //"http://localhost:5173" // frontend origin
   credentials: true, // ✅ allow cookies
 }));
 app.use(cookieParser());
