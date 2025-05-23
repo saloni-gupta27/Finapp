@@ -47,10 +47,10 @@ export const login = async (req, res) => {
       });
       res.cookie("token", token, {
         httpOnly: true,
-        //secure: true, 
-        secure: false, // true in production (HTTPS)
-        //sameSite: "None", 
-        sameSite:"Lax",
+        secure: true, 
+        // secure: false, // true in production (HTTPS)
+        sameSite: "None", 
+        // sameSite:"Lax",
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
       });
   
